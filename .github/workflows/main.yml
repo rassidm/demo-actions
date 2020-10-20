@@ -14,7 +14,7 @@ jobs:
         with:
           java-version: 11
       - name: print message
-        run: 'echo Hello $MY_SECRET'
+        run: 'echo Hello "%SUPER_SECRET%"'
           env:
             MY_SECRET: ${{ secrets.WORLD }}
       - name: Build with Maven
