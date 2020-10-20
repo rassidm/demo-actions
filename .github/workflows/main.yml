@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: print message
+        run: 'echo Hello there!'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: print message
-          run: 'echo Hello there!'
