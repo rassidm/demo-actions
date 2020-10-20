@@ -44,5 +44,12 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>jonathan-repository</id>
+            <name>repository demo</name>
+            <url>https://maven.pkg.github.com/jhonifaber/demo-actions</url>
+        </repository>
+    </distributionManagement>
 
 </project>
