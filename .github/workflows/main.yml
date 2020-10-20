@@ -14,6 +14,6 @@ jobs:
         with:
           java-version: 11
       - name: print message
-        run: 'echo Hello there!'
+        run: 'echo Hello ' ${{ secrets.WORLD }}
       - name: Build with Maven
         run: mvn -B package --file pom.xml
