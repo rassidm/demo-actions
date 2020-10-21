@@ -46,7 +46,7 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>jonathan-repository</id>
+            <id>jonathan-</id>
             <name>repository demo</name>
             <url>https://maven.pkg.github.com/jhonifaber/demo-actions</url>
         </repository>
