@@ -16,7 +16,20 @@
 
     <properties>
         <java.version>11</java.version>
+        <assertj.version>3.17.2</assertj.version>
+        <logback.version>1.2.3</logback.version>
+        <mockito.version>3.5.13</mockito.version>
+        <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <kassava.version>2.1.0-rc.1</kassava.version>
+        <docker-maven-plugin.version>0.34.1</docker-maven-plugin.version>
+        <it.postgresql.image>postgres:10-alpine</it.postgresql.image>
+        <it.postgresql.host>localhost</it.postgresql.host>
+        <it.postgresql.port>5432</it.postgresql.port>
+        <it.postgresql.db>archimedes</it.postgresql.db>
+        <it.postgresql.password>verysecret</it.postgresql.password>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -38,32 +51,80 @@
 
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>2.22.2</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>test</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <excludes>-->
+<!--                                <exclude>none</exclude>-->
+<!--                            </excludes>-->
+<!--                            <includes>-->
+<!--                                <include>**/*IT.java</include>-->
+<!--                            </includes>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>none</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                    <images>
+                        <image>
+                            <name>${it.postgresql.image}</name>
+                            <run>
+                                <ports>
+                                    <port>${it.postgresql.port}:5432</port>
+                                </ports>
+                                <env>
+                                    <POSTGRES_PASSWORD>${it.postgresql.password}</POSTGRES_PASSWORD>
+                                    <POSTGRES_DB>${it.postgresql.db}</POSTGRES_DB>
+                                </env>
+                                <wait>
+                                    <log>database system is ready to accept connections</log>
+                                </wait>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
                 <executions>
                     <execution>
-                        <phase>integration-test</phase>
+                        <id>start</id>
+                        <phase>pre-integration-test</phase>
                         <goals>
-                            <goal>test</goal>
+                            <goal>start</goal>
                         </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>none</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*IT.java</include>
-                            </includes>
-                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
+
     </build>
     <distributionManagement>
         <repository>
