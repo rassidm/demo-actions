@@ -25,7 +25,7 @@ public class DemoIT {
         ResponseEntity<String> response = this.restTemplate.exchange(createUrlWith("/hello"), HttpMethod.GET, entity, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Hello !", response.getBody());
+        assertEquals("hello wordl!", response.getBody());
     }
 
     private String createUrlWith(String endpoint) {
