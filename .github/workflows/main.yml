@@ -27,8 +27,8 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       - uses: actions/upload-artifact@v2
-          with:
-            path: staging
+        with:
+          path: target/
       - name: Publish package
         run: mvn -B deploy
         env:
