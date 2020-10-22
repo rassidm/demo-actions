@@ -24,7 +24,7 @@ jobs:
           java-version: 11
       - uses: actions/cache@v2
           with:
-            path: ~/.m2/repository/
+            path: ~/.m2
       - name: Publish package
         run: mvn -B deploy
         env:
