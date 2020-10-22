@@ -21,11 +21,6 @@ jobs:
       docker-dind-container:
         image: docker:dind
         env:
-          DOCKER_HOST: tcp://docker:2376
-          DOCKER_TLS_CERTDIR: /certs
-          DOCKER_CERT_PATH: /certs/client
-          DOCKER_TLS_VERIFY: 1
-          DOCKER_DRIVER: overlay2
           MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
     steps:
       - uses: actions/checkout@v2
@@ -37,9 +32,14 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       - name: Publish package
-        run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-build
+        run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host= docker-dind-container
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_HOST: tcp://docker:2376
+            DOCKER_TLS_CERTDIR: /certs
+            DOCKER_CERT_PATH: /certs/client
+            DOCKER_TLS_VERIFY: 1
+            DOCKER_DRIVER: overlay2
       - name: Copying target jar
         run: |
           mkdir myTarget
