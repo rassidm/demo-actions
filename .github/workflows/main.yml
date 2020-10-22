@@ -24,7 +24,6 @@ jobs:
           java-version: 11
       - uses: actions/cache@v2
         with:
-          name: cache m2 repositories
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       - name: Publish package
