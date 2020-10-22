@@ -37,7 +37,7 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       - name: Publish package
-        run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host= docker-dind-container
+        run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-dind-container
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Copying target jar
