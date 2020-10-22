@@ -39,6 +39,7 @@ jobs:
         run: mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
       - name: Copying target jar
         run: |
           mkdir myTarget
