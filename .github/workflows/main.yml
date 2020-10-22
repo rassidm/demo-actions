@@ -26,7 +26,7 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      - run: mkdir myTarget && cp /target/*.jar myTarget
+      - run: mkdir myTarget && cp target/ myTarget
       - uses: actions/upload-artifact@v2
         with:
           name: mypackage
