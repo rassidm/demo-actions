@@ -26,11 +26,11 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      - run: mkdir myTarget && cp target/ myTarget
+      - run: mkdir target && cp target/*.jar target
       - uses: actions/upload-artifact@v2
         with:
           name: mypackage
-          path: myTarget
+          path: target
       - name: Publish package
         run: mvn -B deploy
         env:
