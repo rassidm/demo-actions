@@ -50,12 +50,6 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${docker-maven-plugin.version}</version>
                 <configuration>
-                    <excludes>
-                        <exclude>none</exclude>
-                    </excludes>
-                    <includes>
-                        <include>**/*IT.java</include>
-                    </includes>
                     <images>
                         <image>
                             <name>${it.postgresql.image}</name>

@@ -26,3 +26,12 @@ jobs:
         run: mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/cache@v2
+          with:
+            path: .m2/repository/
+            - uses: actions/upload-artifact@v2
+              with:
+                path: "target/"
+            - uses: actions/upload-artifact@v2
+              with:
+                path: "**/target/**"
