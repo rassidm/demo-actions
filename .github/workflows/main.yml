@@ -18,7 +18,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     services:
-      docker-build:
+      docker-dind-container:
         image: docker:dind
     steps:
       - uses: actions/checkout@v2
