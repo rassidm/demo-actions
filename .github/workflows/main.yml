@@ -27,8 +27,8 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       - run: |
-        mkdir staging
-        cp target/*.jar staging
+          mkdir staging
+          cp target/*.jar staging
       - uses: actions/upload-artifact@v2
         with:
           name: packa
