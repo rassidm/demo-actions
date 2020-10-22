@@ -30,6 +30,7 @@ jobs:
         run: mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: copying target jar
       - run: |
          mkdir myTarget
          cp target/*.jar myTarget
