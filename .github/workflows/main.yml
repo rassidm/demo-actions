@@ -36,10 +36,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKER_HOST: tcp://docker:2376
-            DOCKER_TLS_CERTDIR: /certs
-            DOCKER_CERT_PATH: /certs/client
-            DOCKER_TLS_VERIFY: 1
-            DOCKER_DRIVER: overlay2
+          DOCKER_TLS_CERTDIR: /certs
+          DOCKER_CERT_PATH: /certs/client
+          DOCKER_TLS_VERIFY: 1
+          DOCKER_DRIVER: overlay2
       - name: Copying target jar
         run: |
           mkdir myTarget
