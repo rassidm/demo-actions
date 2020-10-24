@@ -20,8 +20,9 @@
         <it.postgresql.image>postgres:10-alpine</it.postgresql.image>
         <it.postgresql.host>localhost</it.postgresql.host>
         <it.postgresql.port>5432</it.postgresql.port>
-        <it.postgresql.db>prueba</it.postgresql.db>
-        <it.postgresql.password>verysecret</it.postgresql.password>
+        <it.postgresql.db>postgres-db</it.postgresql.db>
+        <it.postgresql.username>demo</it.postgresql.username>
+        <it.postgresql.password>demo</it.postgresql.password>
     </properties>
 
 
@@ -67,6 +68,7 @@
                                     <port>${it.postgresql.port}:5432</port>
                                 </ports>
                                 <env>
+                                    <POSTGRES_USER>${it.postgresql.username}</POSTGRES_USER>
                                     <POSTGRES_PASSWORD>${it.postgresql.password}</POSTGRES_PASSWORD>
                                     <POSTGRES_DB>${it.postgresql.db}</POSTGRES_DB>
                                 </env>
