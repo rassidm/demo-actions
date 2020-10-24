@@ -1,0 +1,13 @@
+version: "3"
+services:
+mysql-dev:
+  image: mysql:8.0
+  container_name: mysql-dev
+  privileged: true
+  volumes:
+    - "./bd-mysql-dev/data/mysql:/var/lib/mysql"
+  ports:
+    - 3309:3306
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    MYSQL_DATABASE: "practica-dev"
