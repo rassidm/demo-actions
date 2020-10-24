@@ -19,4 +19,8 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    public void createRoom(User user) {
+        userRepository.createUser(user);
+    }
 }

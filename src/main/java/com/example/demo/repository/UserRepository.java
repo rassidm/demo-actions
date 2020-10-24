@@ -17,4 +17,11 @@ public class UserRepository {
         return jdbcTemplate.query("select * from users", new BeanPropertyRowMapper(User.class));
 
     }
+
+    public void createUser(User user) {
+        jdbcTemplate.update(
+                "INSERT INTO users VALUES (?, ?)",
+                user.getId(), user.getName()
+        );
+    }
 }
