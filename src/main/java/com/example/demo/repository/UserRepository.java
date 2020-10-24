@@ -14,6 +14,7 @@ public class UserRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<User> findAll() {
-        return jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<>(User.class));
+        return jdbcTemplate.query("select * from users", new BeanPropertyRowMapper(User.class));
+
     }
 }
