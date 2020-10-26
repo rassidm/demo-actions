@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    if: github.ref == 'refs/heads/pepe'
+    #if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     services:
       docker-dind-container:
@@ -41,10 +41,6 @@ jobs:
           name: myPackage
           path: myTarget
 
-  build:
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+
 
 
