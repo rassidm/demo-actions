@@ -1,4 +1,4 @@
-name: A workflow for my Hello World spring project
+name: my first workflow for a java project
 on:
   push:
     branches: [ master ]
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          key: ${{ hashFiles('**/pom.xml') }}
       - name: Publish package
         run: mvn clean deploy
         env:
