@@ -109,12 +109,12 @@
         </plugins>
 
     </build>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>repository demo</name>
-            <url>https://maven.pkg.github.com/jhonifaber/demo-actions</url>
-        </repository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>github</id>-->
+<!--            <name>repository demo</name>-->
+<!--            <url>https://maven.pkg.github.com/jhonifaber/demo-actions</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
 
 </project>
