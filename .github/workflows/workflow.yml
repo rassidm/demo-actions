@@ -6,7 +6,6 @@ on:
 
 jobs:
   publish:
-    only: master
     runs-on: ubuntu-latest
     services:
       docker-dind-container:
