@@ -45,17 +45,6 @@ public class UserEndpointIT {
         assertEquals(EXPECTED_USERS, response.getBody().size());
     }
 
-    @Test
-    public void hello_endpoint_should_return_hello_world() {
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity entity = new HttpEntity(headers);
-
-        ResponseEntity<String> response = this.restTemplate.exchange(createUrlWith("/hello"), HttpMethod.GET, entity, String.class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("hello wordl!", response.getBody());
-    }
-
     private String createUrlWith(String endpoint) {
         return "http://localhost:" + port + endpoint;
     }
