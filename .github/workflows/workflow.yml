@@ -6,6 +6,7 @@ on:
 
 jobs:
   publish:
+    if: github.ref == 'refs/heads/pepe'
     runs-on: ubuntu-latest
     services:
       docker-dind-container:
