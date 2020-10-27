@@ -12,11 +12,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-          settings-path: ".m2/"
+          settings-path: ".m2/" #TUTORIALLLLL
       - uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          key: ${{ secrets.CACHE_VERSION }}
       - name: Publish package
         run: mvn $MAVEN_CLI_OPTS clean deploy
         env:
