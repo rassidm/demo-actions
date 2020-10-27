@@ -27,6 +27,7 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+      - run: echo $DOCKER_HOST
       - name: Publish package
         run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-dind-container
         env:
