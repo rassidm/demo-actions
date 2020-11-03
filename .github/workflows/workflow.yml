@@ -1,11 +1,8 @@
 name: A workflow for my Hello World spring project
-on:
-  push:
-    branches: [ master ]
 
 jobs:
   publish:
-    #    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
