@@ -1,4 +1,7 @@
 name: A workflow for my Hello World spring project
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   publish:
